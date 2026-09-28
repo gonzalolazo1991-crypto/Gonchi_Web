@@ -1,13 +1,13 @@
 :root {
-  --bg: #fbfaf7;
-  --bg-alt: #f1efe9;
+  --bg: #fbfcfd;
+  --bg-alt: #eef4f6;
   --surface: #ffffff;
-  --text: #1d2a2a;
-  --muted: #5c6b6a;
-  --border: #e2dfd7;
-  --primary: #1f6f6b;       /* salud ocupacional */
-  --primary-dark: #17524f;
-  --physical: #d9822b;      /* bienestar físico */
+  --text: #0f2240;
+  --muted: #56627a;
+  --border: #e2e4e8;
+  --primary: #00838f;       /* salud ocupacional · colores del logo */
+  --primary-dark: #00295f;
+  --physical: #f09a14;      /* bienestar físico */
   --emotional: #7a5ea8;     /* bienestar emocional */
   --radius: 16px;
   --shadow: 0 10px 30px rgba(29, 42, 42, 0.08);
@@ -21,8 +21,8 @@
     --text: #e8eeec;
     --muted: #9fb0ad;
     --border: #2a3836;
-    --primary: #4fb3ab;
-    --primary-dark: #3d948d;
+    --primary: #2cc0cc;
+    --primary-dark: #1c9ea9;
     --physical: #f0a35a;
     --emotional: #a58bd4;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -101,15 +101,13 @@ a { color: inherit; }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; }
-.logo-mark {
-  display: grid; place-items: center;
-  width: 38px; height: 38px; border-radius: 50%;
-  font-size: 0.7rem; font-weight: 700; color: var(--primary);
-  background:
-    radial-gradient(circle, var(--bg) 58%, transparent 60%),
-    conic-gradient(var(--primary) 0 33%, var(--physical) 0 66%, var(--emotional) 0);
+.logo img { display: block; height: 56px; width: auto; }
+@media (prefers-color-scheme: dark) {
+  /* el azul marino del logo necesita fondo claro */
+  .logo img { background: #fff; padding: 4px 8px; border-radius: 10px; box-sizing: content-box; height: 48px; }
+  .btn, .menu .btn, .btn-ghost:hover { color: #06222a; }
 }
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a { text-decoration: none; font-weight: 500; }
@@ -234,7 +232,7 @@ a { color: inherit; }
 @media (max-width: 760px) {
   .nav-toggle { display: block; }
   .menu {
-    position: absolute; top: 70px; left: 0; right: 0;
+    position: absolute; top: 76px; left: 0; right: 0;
     flex-direction: column; align-items: flex-start; gap: 0;
     background: var(--bg); border-bottom: 1px solid var(--border);
     padding: 8px 20px 20px;
@@ -243,6 +241,7 @@ a { color: inherit; }
   .menu.open { display: flex; }
   .menu a { padding: 12px 0; width: 100%; }
   .menu .btn { margin-top: 8px; width: auto; }
+  .logo img { height: 46px; }
   .section { padding: 64px 0; }
   .tag-3 { left: -2%; }
   .tag-1 { right: 0; }
