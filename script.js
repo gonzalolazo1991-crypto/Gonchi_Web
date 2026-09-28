@@ -1,5 +1,5 @@
 // Nombre de la marca: cámbialo aquí y se actualiza en toda la página.
-const BRAND_NAME = "Bed and Well 360";
+const BRAND_NAME = "Bett&Well 360°";
 
 document.querySelectorAll(".brand-name").forEach((el) => (el.textContent = BRAND_NAME));
 document.title = `${BRAND_NAME} · Salud ocupacional y bienestar integral`;
