@@ -107,7 +107,7 @@ a { color: inherit; }
 @media (prefers-color-scheme: dark) {
   /* el azul marino del logo necesita fondo claro */
   .logo img { background: #fff; padding: 4px 8px; border-radius: 10px; box-sizing: content-box; height: 48px; }
-  .btn, .menu .btn, .btn-ghost:hover { color: #06222a; }
+  .btn:not(.btn-ghost), .btn-ghost:hover, .menu a.btn { color: #06222a; }
 }
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a { text-decoration: none; font-weight: 500; }
