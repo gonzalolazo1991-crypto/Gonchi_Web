@@ -20,7 +20,7 @@ menu.querySelectorAll("a").forEach((a) =>
 );
 
 // Animación al hacer scroll
-const revealTargets = document.querySelectorAll(".pillar, .steps li, .service, .about > div, .contact > *");
+const revealTargets = document.querySelectorAll(".pillar, .audience, .steps li, .dash, .member, .contact > *");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) =>
@@ -38,14 +38,22 @@ if ("IntersectionObserver" in window) {
   });
 }
 
+// Enlaces aún sin destino (WhatsApp, legales, redes): evita que salten al inicio
+document.querySelectorAll('a[href="#"]').forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+
 // Formulario de contacto (por ahora solo valida; falta conectarlo a un correo o servicio)
 const form = document.getElementById("contact-form");
 const status = form.querySelector(".form-status");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const { nombre, correo } = form.elements;
-  if (!nombre.value.trim() || !correo.validity.valid || !correo.value.trim()) {
-    status.textContent = "Por favor completa tu nombre y un correo válido.";
+  const { nombre, correo, empresa, colaboradores, acepto } = form.elements;
+  let error = "";
+  if (!nombre.value.trim() || !empresa.value.trim()) error = "Completa tu nombre y el nombre de tu empresa.";
+  else if (!correo.value.trim() || !correo.validity.valid) error = "Escribe un correo válido, por ejemplo nombre@empresa.com.";
+  else if (!colaboradores.value) error = "Selecciona el número de colaboradores de tu empresa.";
+  else if (!acepto.checked) error = "Para enviar, acepta la política de privacidad.";
+  if (error) {
+    status.textContent = error;
     status.className = "form-status error";
     return;
   }
